@@ -1,0 +1,276 @@
+/* Replaces next/image "fill" behaviour used by the original components. */
+.pg-device-picker__artwork img,
+.pg-device-purpose__artwork img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pg-loading {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ---- Sensor hubs: channel overview in the hardware section, and the "no sensor available" notification ---- */
+
+.pg-hubs {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 14px;
+  padding: 12px 14px;
+  border: 1px solid var(--pg-line);
+  border-radius: 10px;
+  background: var(--pg-surface-2);
+}
+
+.pg-hubs__summary,
+.pg-hub {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 14px;
+  font-size: 12px;
+  color: var(--pg-muted);
+}
+
+.pg-hubs__summary strong {
+  color: var(--pg-text);
+}
+
+.pg-hub {
+  padding-top: 8px;
+  border-top: 1px solid var(--pg-line);
+}
+
+.pg-hub__name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  color: var(--pg-text);
+}
+
+.pg-hub__name small {
+  display: block;
+  color: var(--pg-faint);
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+
+.pg-hub__channels,
+.pg-hub__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.pg-hub__channel {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--pg-line);
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--pg-faint);
+}
+
+.pg-hub__channel--free {
+  border-color: color-mix(in srgb, var(--pg-safe) 70%, transparent);
+  color: var(--pg-safe);
+}
+
+.pg-hub__channel--used {
+  border-color: color-mix(in srgb, var(--pg-accent) 70%, transparent);
+  background: color-mix(in srgb, var(--pg-accent) 16%, transparent);
+  color: var(--pg-accent);
+}
+
+.pg-hub__channel--fault {
+  border-color: color-mix(in srgb, var(--pg-warning) 70%, transparent);
+  color: var(--pg-warning);
+}
+
+.pg-sensor-notice {
+  display: flex;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid color-mix(in srgb, var(--pg-warning) 60%, transparent);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--pg-warning) 10%, transparent);
+  color: var(--pg-text);
+}
+
+.pg-sensor-notice__icon {
+  flex: none;
+  color: var(--pg-warning);
+}
+
+.pg-sensor-notice strong {
+  display: block;
+  font-size: 13px;
+}
+
+.pg-sensor-notice p {
+  margin: 4px 0 0;
+  color: var(--pg-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.pg-sensor-notice .pg-btn {
+  margin-top: 10px;
+}
+
+/* ---- Channel states in the hub panel (colour is never the only cue: each chip also has a text label) ---- */
+
+.pg-hub__channel--tripped {
+  border-color: var(--pg-critical);
+  background: color-mix(in srgb, var(--pg-critical) 18%, transparent);
+  color: var(--pg-critical);
+}
+
+.pg-hub__channel--off {
+  border-style: dashed;
+  color: var(--pg-faint);
+}
+
+.pg-hubs__legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  margin: 0;
+  font-size: 11px;
+  color: var(--pg-faint);
+}
+
+.pg-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---- Simulated data must never look real ---- */
+
+.pg-sim-badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 6px;
+  border: 1px solid var(--pg-warning);
+  border-radius: 4px;
+  color: var(--pg-warning);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  vertical-align: middle;
+}
+
+.pg-sim-banner {
+  margin: 0;
+  padding: 8px 10px;
+  border: 1px solid color-mix(in srgb, var(--pg-warning) 60%, transparent);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--pg-warning) 10%, transparent);
+  color: var(--pg-text-soft);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.pg-sim-banner strong {
+  color: var(--pg-warning);
+}
+
+.pg-sensor-warning {
+  color: var(--pg-warning);
+}
+
+/* ---- Channel picker in the Add device dialog ---- */
+
+.pg-channel-picker {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.pg-channel-picker legend {
+  padding: 0;
+  margin-bottom: 4px;
+  color: var(--pg-text);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.pg-channel-picker > p {
+  margin: 0;
+  color: var(--pg-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.pg-channel-picker__list {
+  display: grid;
+  gap: 8px;
+}
+
+.pg-channel-option {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--pg-line-strong);
+  border-radius: 8px;
+  background: var(--pg-surface-2);
+  color: var(--pg-text-soft);
+  font: inherit;
+  font-size: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.pg-channel-option strong {
+  color: var(--pg-text);
+  font-size: 13px;
+}
+
+.pg-channel-option.is-selected {
+  border-color: var(--pg-accent);
+  box-shadow: inset 0 0 0 1px var(--pg-accent);
+}
+
+.pg-channel-option.is-detected:not(.is-selected) {
+  border-color: var(--pg-safe);
+}
+
+.pg-tag {
+  padding: 1px 6px;
+  border: 1px solid var(--pg-line-strong);
+  border-radius: 4px;
+  color: var(--pg-muted);
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.pg-tag--ok {
+  border-color: var(--pg-safe);
+  color: var(--pg-safe);
+}
+
+.pg-tag--warn {
+  border-color: var(--pg-warning);
+  color: var(--pg-warning);
+}
